@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sessionStorage</title>
+<body>
+    <h2>sessionStorage</h2>
+    <button onclick="saveData()">点我保存数据</button>
+    <button onclick="readData()">点我读取数据</button>
+    <button onclick="delData()">点我删除一个数据</button>
+    <button onclick="delAllData()">点我清空数据</button>
+
+    <script>
+        let p = {name: "张三", age: 18}
+        function saveData() {
+            // sessionStorage.setItem(key, value) 会自动调用toString()方法将value转换成String类型的数据
+            sessionStorage.setItem("msg", "hello!")
+            sessionStorage.setItem("msg2", 666) 
+            sessionStorage.setItem("person", JSON.stringify(p))
+        }
+        function readData() {
+            console.log(sessionStorage.getItem("msg"))
+            console.log(sessionStorage.getItem("msg2"))
+            const res = sessionStorage.getItem('person')
+            console.log(JSON.parse(res))
+        }
+        function delData() {
+            sessionStorage.removeItem('person')
+        }
+        function delAllData() {
+            sessionStorage.clear()
+        }
+    </script>
+</body>
+</html>
